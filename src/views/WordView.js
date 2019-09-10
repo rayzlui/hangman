@@ -1,30 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export function WordDisplay(props) {
+export function WordView(props) {
   const { word, guesses } = props;
   return (
-    <div className="word-display">
-      {word.reduce((acc, letter, index) => {
-        let showing;
-        if (guesses.includes(letter)) {
-          showing = letter;
-        } else {
-          showing = ' _ ';
-        }
-        acc.push(
-          <h3 key={index} className="word-display">
-            {showing}
-          </h3>,
-        );
-        return acc;
-      }, [])}
-      ;
-    </div>
+    <>
+      <section className="guess-display">
+        Already Guessed: {Object.keys(guesses)}
+      </section>
+      <section className="word-display">
+        {word.reduce((acc, letter) => {
+          let showing;
+          if (guesses[letter] === true) {
+            showing = letter;
+          } else {
+            showing = ' _ ';
+          }
+          acc.push(showing);
+          return acc;
+        }, [])}
+      </section>
+    </>
   );
 }
 
-WordDisplay.propTypes = {
+WordView.propTypes = {
   word: PropTypes.array,
-  guesses: PropTypes.array,
+  guesses: PropTypes.object,
+  submitGuess: PropTypes.func,
 };
