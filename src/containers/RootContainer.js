@@ -1,11 +1,11 @@
-import { WordView } from '../views/WordView';
-import { connect } from 'react-redux';
+import { RootView } from '../views/RootView';
 import { inputLetter } from '../actions/actions';
+import { connect } from 'react-redux';
 
 function mapStateToProps(state) {
   return {
-    word: state.word.word,
     guesses: state.guesses,
+    turns: state.word.turns,
   };
 }
 
@@ -15,7 +15,7 @@ function mapDispatchtoProps(dispatch) {
   };
 }
 
-export const WordContainer = connect(
+export const RootContainer = connect(
   mapStateToProps,
   mapDispatchtoProps,
-)(WordView);
+)(RootView);
