@@ -1,9 +1,11 @@
-import { INPUT_LETTER } from '../actions/actionTypes';
+import { INPUT_LETTER, NEW_GAME } from '../actions/actionTypes';
 
-export function guessReducer(state = [], action) {
+export function guessReducer(state = {}, action) {
   switch (action.type) {
     case INPUT_LETTER:
-      return state.slice().push(action.letter);
+      return Object.assign({}, state, (state[action.letter] = true));
+    case NEW_GAME:
+      return {};
     default:
       return state;
   }
