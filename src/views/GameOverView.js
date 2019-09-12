@@ -1,11 +1,10 @@
 import React from 'react';
-import { isWinner } from '../helperFunctions/helperFunctions';
 import { NewGameContainer } from '../containers/NewGameContainer';
 
 export function GameOverView(props) {
-  const { guesses, word, turns } = props;
+  const { isWinner, word, turns } = props;
 
-  if (isWinner(guesses, word)) {
+  if (isWinner) {
     return (
       <>
         <h1>You Win!</h1>
