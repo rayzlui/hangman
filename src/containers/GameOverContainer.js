@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
 import { GameOverView } from '../views/GameOverView';
+import { isWinner } from '../helperFunctions/helperFunctions';
 
 function mapStateToProps(state) {
   return {
     turns: state.word.turns,
     word: state.word.word,
-    guesses: state.guesses,
+    isWinner: isWinner(state.guesses, state.word),
   };
 }
 
